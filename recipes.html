@@ -67,8 +67,8 @@
                         <p class="lead mb-4">Discover authentic Filipino recipes that bring the taste of the Philippines to your kitchen.</p>
                         <div class="search-box mb-4">
                             <div class="input-group">
-                                <input type="search" class="form-control form-control-lg" placeholder="Search recipes...">
-                                <button class="btn btn-primary" type="button">
+                                <input type="search" id="recipeSearch" class="form-control form-control-lg" placeholder="Search recipes...">
+                                <button class="btn btn-primary" type="button" onclick="filterRecipes()">
                                     <i class="bi bi-search"></i>
                                 </button>
                             </div>
@@ -259,6 +259,51 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/favorites.js"></script>
     <script>
+        // Search functionality
+        function filterRecipes() {
+            const searchTerm = document.getElementById('recipeSearch').value.toLowerCase();
+            
+            // Filter Popular Recipes
+            const popularRecipes = document.querySelectorAll('.featured-recipes .recipe-card');
+            popularRecipes.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const description = card.querySelector('.card-text').textContent.toLowerCase();
+                const isMatch = title.includes(searchTerm) || description.includes(searchTerm);
+                card.closest('.col-md-6').style.display = isMatch ? '' : 'none';
+            });
+
+            // Filter Favorite Recipes
+            const favoriteRecipes = document.querySelectorAll('#favoriteRecipes .recipe-card');
+            let hasVisibleFavorites = false;
+            favoriteRecipes.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const description = card.querySelector('.card-text').textContent.toLowerCase();
+                const isMatch = title.includes(searchTerm) || description.includes(searchTerm);
+                card.closest('.col-md-6').style.display = isMatch ? '' : 'none';
+                if (isMatch) hasVisibleFavorites = true;
+            });
+
+            // Show/hide no favorites message based on search results
+            const noFavoritesMessage = document.getElementById('noFavorites');
+            if (favoriteRecipes.length > 0) {
+                noFavoritesMessage.style.display = hasVisibleFavorites ? 'none' : 'block';
+                if (!hasVisibleFavorites) {
+                    noFavoritesMessage.innerHTML = `
+                        <p class="text-muted">
+                            <i class="bi bi-search"></i>
+                            No matching favorite recipes found
+                        </p>
+                    `;
+                }
+            }
+        }
+
+        // Add search on Enter key
+        document.getElementById('recipeSearch').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                filterRecipes();
+            }
+        });
 
         // Handle saving a recipe
         async function handleSaveRecipe(recipe) {
