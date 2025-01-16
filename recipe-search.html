@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         .search-hero {
             background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
@@ -76,10 +77,10 @@
     <section class="search-hero text-white">
         <div class="container search-container">
             <div class="row justify-content-center">
-                <div class="col-md-8 text-center">
+                <div class="col-md-8 text-center" data-aos="fade-up">
                     <h1 class="display-4 mb-4">Find Your Recipe</h1>
                     <p class="lead mb-4">Search through our collection of authentic Filipino recipes</p>
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3" data-aos="fade-up" data-aos-delay="100">
                         <input type="text" id="searchInput" class="form-control form-control-lg" 
                                placeholder="Search recipes (e.g., adobo, sinigang)">
                         <button class="btn btn-dark btn-lg" type="button" id="searchButton">
@@ -94,7 +95,7 @@
     <!-- Results Section -->
     <div class="container mb-5">
         <!-- Loading Indicator -->
-        <div id="loadingIndicator" class="loading-indicator d-none">
+        <div id="loadingIndicator" class="loading-indicator d-none" data-aos="fade-up">
             <div class="text-center">
                 <div class="spinner-border text-primary" role="status">
                     <span class="visually-hidden">Loading...</span>
@@ -109,7 +110,7 @@
         </div>
 
         <!-- No Results Message -->
-        <div id="noResults" class="text-center d-none">
+        <div id="noResults" class="text-center d-none" data-aos="fade-up">
             <div class="alert alert-info" role="alert">
                 <i class="bi bi-info-circle me-2"></i>
                 No recipes found. Try different keywords.
@@ -142,9 +143,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/favorites.js"></script>
     <script src="assets/js/recipe_search.js"></script>
     <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
         // Debug: Check if SweetAlert2 is loaded
         console.log('SweetAlert2 loaded?', typeof Swal !== 'undefined');
         // Debug: Check if favorites.js is loaded
@@ -225,6 +231,8 @@
             const localUrl = getLocalRecipeUrl(recipe.title);
             const card = document.createElement('div');
             card.className = 'col-md-4';
+            card.setAttribute('data-aos', 'fade-up');
+            card.setAttribute('data-aos-delay', '100');
             card.innerHTML = `
                 <div class="card h-100 shadow-sm">
                     <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}" style="height: 160px; object-fit: cover;">
