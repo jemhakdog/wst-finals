@@ -255,7 +255,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const saveBtn = document.getElementById('saveRecipeBtn');
             const recipe = {
-                url: window.location.pathname,
+                url: 'recipes/chicken-adobo.html', // Use consistent URL format
                 title: 'Filipino Chicken Adobo',
                 image: 'https://panlasangpinoy.com/wp-content/uploads/2024/04/Filipino-Chicken-Adobo-Recipe.jpg',
                 description: 'Chicken Adobo is a classic Filipino dish and is often considered the unofficial national dish of the Philippines. This savory and slightly tangy dish features chicken braised in vinegar, soy sauce, garlic, and black peppercorns.'
@@ -273,7 +273,12 @@
 
             // Toggle favorite status
             saveBtn.addEventListener('click', () => {
-                recipeFavorites.toggleFavorite(recipe);
+                const isFavorite = recipeFavorites.isFavorite(recipe.url);
+                if (isFavorite) {
+                    recipeFavorites.removeFavorite(recipe.url);
+                } else {
+                    recipeFavorites.addFavorite(recipe);
+                }
                 updateSaveButton();
                 // Dispatch event for recipes page
                 window.dispatchEvent(new CustomEvent('favoritesUpdated'));

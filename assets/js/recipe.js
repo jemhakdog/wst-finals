@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Initialize save recipe functionality
         const saveBtn = document.getElementById('saveRecipeBtn');
         const recipeData = {
-            url: window.location.pathname + window.location.search,
+            url: recipeUrl, // Use the actual recipe URL from query parameter
             title: recipe.title,
             image: recipe.image,
             description: recipe.description
@@ -108,7 +108,8 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         // Update button state based on favorite status
         function updateSaveButton() {
-            const isFavorite = recipeFavorites.isFavorite(recipeData.url);
+            // Check if recipe is saved using the actual recipe URL
+            const isFavorite = recipeFavorites.isFavorite(recipeUrl);
             saveBtn.innerHTML = `
                 <i class="bi bi-heart${isFavorite ? '-fill' : ''}"></i>
                 ${isFavorite ? 'Saved' : 'Save Recipe'}
@@ -118,7 +119,12 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         // Toggle favorite status
         saveBtn.addEventListener('click', () => {
-            recipeFavorites.toggleFavorite(recipeData);
+            const isFavorite = recipeFavorites.isFavorite(recipeUrl);
+            if (isFavorite) {
+                recipeFavorites.removeFavorite(recipeUrl);
+            } else {
+                recipeFavorites.addFavorite(recipeData);
+            }
             updateSaveButton();
             // Dispatch event for recipes page
             window.dispatchEvent(new CustomEvent('favoritesUpdated'));

@@ -52,39 +52,86 @@ const recipeFavorites = new RecipeFavorites();
 
 // Helper function to create favorite button
 function createFavoriteButton(recipe, buttonClass = '') {
+    console.log('Creating favorite button for recipe:', recipe);
+    
     const button = document.createElement('button');
     const isFavorite = recipeFavorites.isFavorite(recipe.url);
+    console.log('Is recipe favorite?', isFavorite);
     
-    button.className = `btn ${buttonClass} ${isFavorite ? 'btn-danger' : 'btn-outline-danger'}`;
+    button.className = `btn ${buttonClass} ${isFavorite ? 'btn-danger disabled' : 'btn-outline-danger'}`;
+    if (isFavorite) {
+        button.disabled = true;
+        button.setAttribute('title', 'Recipe already saved');
+    }
     button.innerHTML = `
         <i class="bi ${isFavorite ? 'bi-heart-fill' : 'bi-heart'}"></i>
-        ${isFavorite ? 'Saved' : 'Save Recipe'}
+        ${isFavorite ? 'Already Saved' : 'Save Recipe'}
     `;
     
-    button.addEventListener('click', (e) => {
+    button.addEventListener('click', async (e) => {
         e.preventDefault();
-        const isNowFavorite = recipeFavorites.toggleFavorite(recipe);
+        console.log('Save button clicked for recipe:', recipe.title);
         
-        button.className = `btn ${buttonClass} ${isNowFavorite ? 'btn-danger' : 'btn-outline-danger'}`;
-        button.innerHTML = `
-            <i class="bi ${isNowFavorite ? 'bi-heart-fill' : 'bi-heart'}"></i>
-            ${isNowFavorite ? 'Saved' : 'Save Recipe'}
-        `;
-
-        // Show notification
-        Swal.fire({
-            icon: 'success',
-            title: isNowFavorite ? 'Recipe Saved!' : 'Recipe Removed',
-            text: isNowFavorite ? 'You can find it in your favorites.' : 'Recipe removed from favorites.',
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true
+        if (typeof Swal === 'undefined') {
+            console.error('SweetAlert2 is not loaded!');
+            alert('Error: SweetAlert2 is not loaded. Please refresh the page.');
+            return;
+        }
+        
+        try {
+            console.log('Showing Swal confirmation dialog...');
+            const result = await Swal.fire({
+            title: recipeFavorites.isFavorite(recipe.url) ? 'Remove from Favorites?' : 'Save Recipe?',
+            text: recipeFavorites.isFavorite(recipe.url) ? 
+                  'Are you sure you want to remove this recipe from your favorites?' : 
+                  'Would you like to save this recipe to your favorites?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: recipeFavorites.isFavorite(recipe.url) ? 'Yes, remove it' : 'Yes, save it',
+            cancelButtonText: 'Cancel'
         });
 
-        // Dispatch event for recipe view page
-        window.dispatchEvent(new CustomEvent('favoritesUpdated'));
+        if (result.isConfirmed) {
+            const isNowFavorite = recipeFavorites.toggleFavorite(recipe);
+            
+            button.className = `btn ${buttonClass} ${isNowFavorite ? 'btn-danger disabled' : 'btn-outline-danger'}`;
+            if (isNowFavorite) {
+                button.disabled = true;
+                button.setAttribute('title', 'Recipe already saved');
+            } else {
+                button.disabled = false;
+                button.removeAttribute('title');
+            }
+            button.innerHTML = `
+                <i class="bi ${isNowFavorite ? 'bi-heart-fill' : 'bi-heart'}"></i>
+                ${isNowFavorite ? 'Already Saved' : 'Save Recipe'}
+            `;
+
+            // Show success notification
+            console.log('Showing success notification...');
+            await Swal.fire({
+                icon: 'success',
+                title: isNowFavorite ? 'Recipe Saved!' : 'Recipe Removed',
+                text: isNowFavorite ? 'You can find it in your favorites.' : 'Recipe removed from favorites.',
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true
+            });
+
+            // Dispatch event for recipe view page
+            window.dispatchEvent(new CustomEvent('favoritesUpdated'));
+        }
+    } catch (error) {
+        console.error('Error in save button click handler:', error);
+        // Fallback notification if Swal fails
+        alert(recipeFavorites.isFavorite(recipe.url) ? 
+              'Are you sure you want to remove this recipe from your favorites?' : 
+              'Would you like to save this recipe to your favorites?');
+    }
     });
     
     return button;

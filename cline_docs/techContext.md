@@ -1,141 +1,85 @@
 # Technical Context
 
-## Technology Stack
+## Technologies Used
 
 ### Frontend
-- HTML5
-- CSS3
+- HTML5/CSS3
 - JavaScript (ES6+)
 - Bootstrap 5.3.0
-- Bootstrap Icons 1.11.3
+- WebSocket API
+- DOM Parser
 
-### Development Tools
-- Visual Studio Code
-- Git for version control
-- npm for package management
-- Browser DevTools
+### Backend
+- Python 3.11
+- Flask Framework
+- aiohttp
+- websockets
+- BeautifulSoup4
 
 ## Development Setup
 
-### Required Software
-- Web browser (Chrome/Firefox/Safari)
-- Text editor (VS Code recommended)
-- Local server capability
-- Git
+### Frontend Requirements
+- Modern web browser with WebSocket support
+- Bootstrap CSS and JS
+- Bootstrap Icons
 
-### Project Structure
-```
-project/
-├── assets/           # Static assets
-│   ├── css/         # Stylesheets
-│   ├── js/          # JavaScript files
-│   └── images/      # Image files
-├── recipes/         # Recipe pages
-├── includes/        # PHP includes
-└── cline_docs/      # Documentation
-```
+### Backend Requirements
+- Python 3.11+
+- pip package manager
+- Virtual environment
+- Required Python packages:
+  - flask
+  - aiohttp
+  - websockets
+  - beautifulsoup4
+  - requests
 
-### Dependencies
-```json
-{
-  "dependencies": {
-    "bootstrap": "^5.3.0",
-    "bootstrap-icons": "^1.11.3"
-  }
-}
-```
+## API Endpoints
+
+### Flask API
+- `/api/recipe/search` - Recipe search endpoint
+- `/api/recipe/get` - Get recipe by URL
+- `/api/recipe/parse` - Parse recipe data
+
+## External Services
+
+### Panlasang Pinoy
+- WebSocket API: wss://c15b-wss.app.slickstream.com/socket
+- Site Code: ZT457GLE
+- Recipe Schema: application/ld+json
+
+## Development Tools
+- Visual Studio Code
+- Git version control
+- Python virtual environment
+- Web browser developer tools
 
 ## Technical Constraints
+- CORS restrictions for direct recipe fetching
+- WebSocket connection timeout limits
+- Rate limiting considerations
+- Browser compatibility requirements
 
-### Browser Support
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
+## Performance Considerations
+- WebSocket connection management
+- Recipe data parsing efficiency
+- Error handling and recovery
+- Loading state management
 
-### Performance Requirements
-- Page load < 3s
-- First contentful paint < 1.5s
-- Time to interactive < 3.5s
+## Security Considerations
+- API endpoint protection
+- Data validation
+- Error message sanitization
+- WebSocket connection security
 
-### Accessibility Standards
-- WCAG 2.1 Level AA
-- Semantic HTML
-- ARIA labels where needed
-- Keyboard navigation
-- Screen reader support
-
-### Security Considerations
-- Input sanitization
-- XSS prevention
-- CSRF protection
-- Secure form handling
-
-## Development Guidelines
-
-### CSS Naming Conventions
-- BEM methodology
-- Component-based structure
-- Utility classes
-- Responsive prefixes
-
-### JavaScript Standards
-- ES6+ features
-- Event delegation
-- Error handling
-- Performance optimization
-
-### Code Quality
-- HTML validation
-- CSS linting
-- JavaScript linting
-- Cross-browser testing
-
-### Version Control
-- Feature branches
-- Semantic commits
-- Pull request reviews
-- Version tagging
-
-## Deployment
-
-### Requirements
-- PHP-enabled server
-- MySQL database
-- SSL certificate
-- Adequate storage
-
-### Process
-1. Code review
-2. Testing
-3. Staging deployment
-4. Production deployment
-
-## Monitoring
-
-### Performance Metrics
-- Page load times
-- Resource usage
-- Error rates
-- User interactions
-
-### Tools
-- Browser DevTools
-- Lighthouse
-- Google Analytics
-- Error tracking
+## Testing Requirements
+- API endpoint testing
+- WebSocket connection testing
+- Recipe parsing validation
+- Error handling verification
 
 ## Documentation
-
-### Required Documentation
-- Setup instructions
 - API documentation
-- Style guide
-- Component library
-
-### Maintenance
-- Regular updates
-- Version history
-- Change logs
-- Technical debt tracking
+- Setup instructions
+- Deployment guide
+- Troubleshooting guide

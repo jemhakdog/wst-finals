@@ -12,6 +12,18 @@
     <!-- Custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/enhanced-style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <style>
+        /* Recipe Card Hover Effect */
+        .recipe-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+        }
+    </style>
 </head>
 <body>
     <header role="banner" class="fixed-top">
@@ -72,69 +84,125 @@
                 <div class="row g-4">
                     <div class="col-md-6 col-lg-3">
                         <article class="recipe-card h-100">
-                            <a href="recipes/chicken-adobo.html" class="text-decoration-none">
-                                <img src="https://panlasangpinoy.com/wp-content/uploads/2024/04/Filipino-Chicken-Adobo-Recipe.jpg" 
-                                     class="card-img-top" alt="Chicken Adobo">
-                                <div class="card-body">
-                                    <h3 class="card-title h5">Chicken Adobo</h3>
-                                    <p class="card-text">Classic Filipino chicken dish cooked in soy sauce and vinegar</p>
-                                    <div class="recipe-meta">
-                                        <span><i class="bi bi-clock"></i> 45 mins</span>
-                                        <span><i class="bi bi-star-fill text-warning"></i> 4.8</span>
-                                    </div>
+                            <img src="https://panlasangpinoy.com/wp-content/uploads/2024/04/Filipino-Chicken-Adobo-Recipe.jpg" 
+                                 class="card-img-top" alt="Chicken Adobo">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Chicken Adobo</h3>
+                                <p class="card-text">Classic Filipino chicken dish cooked in soy sauce and vinegar</p>
+                                <div class="recipe-meta mb-3">
+                                    <span><i class="bi bi-clock"></i> 45 mins</span>
+                                    <span><i class="bi bi-star-fill text-warning"></i> 4.8</span>
                                 </div>
-                            </a>
+                                <div class="d-flex gap-2">
+                                    <a href="recipes/chicken-adobo.html" class="btn btn-outline-primary">
+                                        <i class="bi bi-eye"></i> View Recipe
+                                    </a>
+                                    <button class="btn btn-outline-danger" onclick="handleSaveRecipe({
+                                        url: 'recipes/chicken-adobo.html',
+                                        title: 'Chicken Adobo',
+                                        image: 'https://panlasangpinoy.com/wp-content/uploads/2024/04/Filipino-Chicken-Adobo-Recipe.jpg',
+                                        description: 'Classic Filipino chicken dish cooked in soy sauce and vinegar',
+                                        cookTime: 45,
+                                        rating: 4.8
+                                    })">
+                                        <i class="bi bi-heart"></i>
+                                        Save Recipe
+                                    </button>
+                                </div>
+                            </div>
                         </article>
                     </div>
 
                     <div class="col-md-6 col-lg-3">
                         <article class="recipe-card h-100">
-                            <a href="recipes/sinigang.html" class="text-decoration-none">
-                                <img src="https://panlasangpinoy.com/wp-content/uploads/2018/11/Pork-Sinigang-Recipe.jpg" 
-                                     class="card-img-top" alt="Sinigang">
-                                <div class="card-body">
-                                    <h3 class="card-title h5">Sinigang</h3>
-                                    <p class="card-text">Sour and savory Filipino soup with pork and vegetables</p>
-                                    <div class="recipe-meta">
-                                        <span><i class="bi bi-clock"></i> 60 mins</span>
-                                        <span><i class="bi bi-star-fill text-warning"></i> 4.7</span>
-                                    </div>
+                            <img src="https://panlasangpinoy.com/wp-content/uploads/2018/11/Pork-Sinigang-Recipe.jpg" 
+                                 class="card-img-top" alt="Sinigang">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Sinigang</h3>
+                                <p class="card-text">Sour and savory Filipino soup with pork and vegetables</p>
+                                <div class="recipe-meta mb-3">
+                                    <span><i class="bi bi-clock"></i> 60 mins</span>
+                                    <span><i class="bi bi-star-fill text-warning"></i> 4.7</span>
                                 </div>
-                            </a>
+                                <div class="d-flex gap-2">
+                                    <a href="recipes/sinigang.html" class="btn btn-outline-primary">
+                                        <i class="bi bi-eye"></i> View Recipe
+                                    </a>
+                                    <button class="btn btn-outline-danger" onclick="handleSaveRecipe({
+                                        url: 'recipes/sinigang.html',
+                                        title: 'Sinigang',
+                                        image: 'https://panlasangpinoy.com/wp-content/uploads/2018/11/Pork-Sinigang-Recipe.jpg',
+                                        description: 'Sour and savory Filipino soup with pork and vegetables',
+                                        cookTime: 60,
+                                        rating: 4.7
+                                    })">
+                                        <i class="bi bi-heart"></i>
+                                        Save Recipe
+                                    </button>
+                                </div>
+                            </div>
                         </article>
                     </div>
 
                     <div class="col-md-6 col-lg-3">
                         <article class="recipe-card h-100">
-                            <a href="recipes/chicken-tinola.html" class="text-decoration-none">
-                                <img src="https://panlasangpinoy.com/wp-content/uploads/2018/11/Chicken-Tinola-Recipe.jpg" 
-                                     class="card-img-top" alt="Chicken Tinola">
-                                <div class="card-body">
-                                    <h3 class="card-title h5">Chicken Tinola</h3>
-                                    <p class="card-text">Ginger-flavored chicken soup with green papaya</p>
-                                    <div class="recipe-meta">
-                                        <span><i class="bi bi-clock"></i> 50 mins</span>
-                                        <span><i class="bi bi-star-fill text-warning"></i> 4.6</span>
-                                    </div>
+                            <img src="https://panlasangpinoy.com/wp-content/uploads/2018/11/Chicken-Tinola-Recipe.jpg" 
+                                 class="card-img-top" alt="Chicken Tinola">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Chicken Tinola</h3>
+                                <p class="card-text">Ginger-flavored chicken soup with green papaya</p>
+                                <div class="recipe-meta mb-3">
+                                    <span><i class="bi bi-clock"></i> 50 mins</span>
+                                    <span><i class="bi bi-star-fill text-warning"></i> 4.6</span>
                                 </div>
-                            </a>
+                                <div class="d-flex gap-2">
+                                    <a href="recipes/chicken-tinola.html" class="btn btn-outline-primary">
+                                        <i class="bi bi-eye"></i> View Recipe
+                                    </a>
+                                    <button class="btn btn-outline-danger" onclick="handleSaveRecipe({
+                                        url: 'recipes/chicken-tinola.html',
+                                        title: 'Chicken Tinola',
+                                        image: 'https://panlasangpinoy.com/wp-content/uploads/2018/11/Chicken-Tinola-Recipe.jpg',
+                                        description: 'Ginger-flavored chicken soup with green papaya',
+                                        cookTime: 50,
+                                        rating: 4.6
+                                    })">
+                                        <i class="bi bi-heart"></i>
+                                        Save Recipe
+                                    </button>
+                                </div>
+                            </div>
                         </article>
                     </div>
 
                     <div class="col-md-6 col-lg-3">
                         <article class="recipe-card h-100">
-                            <a href="recipes/beef-kaldereta.html" class="text-decoration-none">
-                                <img src="https://panlasangpinoy.com/wp-content/uploads/2019/03/Beef-Kaldereta.jpg"
-                                     class="card-img-top" alt="Beef Kaldereta">
-                                <div class="card-body">
-                                    <h3 class="card-title h5">Beef Kaldereta</h3>
-                                    <p class="card-text">Rich and hearty Filipino beef stew in tomato sauce</p>
-                                    <div class="recipe-meta">
-                                        <span><i class="bi bi-clock"></i> 90 mins</span>
-                                        <span><i class="bi bi-star-fill text-warning"></i> 4.9</span>
-                                    </div>
+                            <img src="https://panlasangpinoy.com/wp-content/uploads/2019/03/Beef-Kaldereta.jpg"
+                                 class="card-img-top" alt="Beef Kaldereta">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Beef Kaldereta</h3>
+                                <p class="card-text">Rich and hearty Filipino beef stew in tomato sauce</p>
+                                <div class="recipe-meta mb-3">
+                                    <span><i class="bi bi-clock"></i> 90 mins</span>
+                                    <span><i class="bi bi-star-fill text-warning"></i> 4.9</span>
                                 </div>
-                            </a>
+                                <div class="d-flex gap-2">
+                                    <a href="recipes/beef-kaldereta.html" class="btn btn-outline-primary">
+                                        <i class="bi bi-eye"></i> View Recipe
+                                    </a>
+                                    <button class="btn btn-outline-danger" onclick="handleSaveRecipe({
+                                        url: 'recipes/beef-kaldereta.html',
+                                        title: 'Beef Kaldereta',
+                                        image: 'https://panlasangpinoy.com/wp-content/uploads/2019/03/Beef-Kaldereta.jpg',
+                                        description: 'Rich and hearty Filipino beef stew in tomato sauce',
+                                        cookTime: 90,
+                                        rating: 4.9
+                                    })">
+                                        <i class="bi bi-heart"></i>
+                                        Save Recipe
+                                    </button>
+                                </div>
+                            </div>
                         </article>
                     </div>
                 </div>
@@ -188,8 +256,77 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/favorites.js"></script>
     <script>
+
+        // Handle saving a recipe
+        async function handleSaveRecipe(recipe) {
+            const isFavorite = recipeFavorites.isFavorite(recipe.url);
+            
+            try {
+                const result = await Swal.fire({
+                    title: isFavorite ? 'Remove from Favorites?' : 'Save Recipe?',
+                    text: isFavorite ? 
+                          'Are you sure you want to remove this recipe from your favorites?' : 
+                          'Would you like to save this recipe to your favorites?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: isFavorite ? 'Yes, remove it' : 'Yes, save it',
+                    cancelButtonText: 'Cancel'
+                });
+
+                if (result.isConfirmed) {
+                    if (isFavorite) {
+                        recipeFavorites.removeFavorite(recipe.url);
+                    } else {
+                        recipeFavorites.addFavorite(recipe);
+                    }
+                    
+                    // Update button state
+                    const button = event.target.closest('button');
+                    if (button) {
+                        if (isFavorite) {
+                            button.classList.remove('btn-danger');
+                            button.classList.add('btn-outline-danger');
+                            button.innerHTML = `
+                                <i class="bi bi-heart"></i>
+                                Save Recipe
+                            `;
+                        } else {
+                            button.classList.remove('btn-outline-danger');
+                            button.classList.add('btn-danger');
+                            button.innerHTML = `
+                                <i class="bi bi-heart-fill"></i>
+                                Saved
+                            `;
+                        }
+                    }
+
+                    // Show success notification
+                    await Swal.fire({
+                        icon: 'success',
+                        title: isFavorite ? 'Recipe Removed' : 'Recipe Saved!',
+                        text: isFavorite ? 'Recipe removed from favorites.' : 'You can find it in your favorites.',
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true
+                    });
+                }
+            } catch (error) {
+                console.error('Error saving recipe:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Failed to save recipe. Please try again later.'
+                });
+            }
+        }
+
         // Initialize favorites display
         function displayFavorites() {
             const favorites = recipeFavorites.getFavorites();
@@ -206,19 +343,24 @@
             favoriteRecipesContainer.innerHTML = favorites.map(recipe => `
                 <div class="col-md-6 col-lg-3">
                     <article class="recipe-card h-100">
-                        <a href="${recipe.url}" class="text-decoration-none">
-                            <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
-                            <div class="card-body">
-                                <h3 class="card-title h5">${recipe.title}</h3>
-                                <p class="card-text">${recipe.description}</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <button onclick="event.preventDefault(); removeFavorite('${recipe.url}')"
-                                            class="btn btn-danger btn-sm">
-                                        <i class="bi bi-heart-fill"></i> Remove
-                                    </button>
-                                </div>
+                        <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
+                        <div class="card-body">
+                            <h3 class="card-title h5">${recipe.title}</h3>
+                            <p class="card-text">${recipe.description}</p>
+                            <div class="recipe-meta mb-3">
+                                ${recipe.cookTime ? `<span><i class="bi bi-clock"></i> ${recipe.cookTime} mins</span>` : ''}
+                                ${recipe.rating ? `<span><i class="bi bi-star-fill text-warning"></i> ${recipe.rating}</span>` : ''}
                             </div>
-                        </a>
+                            <div class="d-flex gap-2">
+                                <a href="${recipe.url.startsWith('recipes/') ? recipe.url : `recipe-template.html?url=${encodeURIComponent(recipe.url)}`}" 
+                                   class="btn btn-outline-primary">
+                                    <i class="bi bi-eye"></i> View Recipe
+                                </a>
+                                <button onclick="removeFavorite('${recipe.url}')" class="btn btn-danger">
+                                    <i class="bi bi-heart-fill"></i> Remove
+                                </button>
+                            </div>
+                        </div>
                     </article>
                 </div>
             `).join('');
@@ -230,11 +372,40 @@
             displayFavorites();
         }
 
-        // Initial display
+        // Update save button states based on favorites
+        function updateSaveButtonStates() {
+            // Get all save recipe buttons
+            const saveButtons = document.querySelectorAll('.btn-outline-danger[onclick*="handleSaveRecipe"]');
+            
+            saveButtons.forEach(button => {
+                // Extract recipe URL from onclick attribute
+                const onclickStr = button.getAttribute('onclick');
+                const match = onclickStr.match(/url:\s*'([^']+)'/);
+                if (match) {
+                    const recipeUrl = match[1];
+                    const isFavorite = recipeFavorites.isFavorite(recipeUrl);
+                    
+                    if (isFavorite) {
+                        button.classList.remove('btn-outline-danger');
+                        button.classList.add('btn-danger');
+                        button.innerHTML = `
+                            <i class="bi bi-heart-fill"></i>
+                            Saved
+                        `;
+                    }
+                }
+            });
+        }
+
+        // Initial display and button states
         displayFavorites();
+        updateSaveButtonStates();
 
         // Listen for favorites updates
-        window.addEventListener('favoritesUpdated', displayFavorites);
+        window.addEventListener('favoritesUpdated', () => {
+            displayFavorites();
+            updateSaveButtonStates();
+        });
     </script>
 </body>
 </html>

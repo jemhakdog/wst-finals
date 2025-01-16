@@ -1,116 +1,86 @@
-# System Patterns
+# System Architecture and Patterns
 
-## Architecture Overview
-```
-filipino-recipes/
-├── assets/
-│   ├── css/
-│   │   ├── style.css        # Global styles
-│   │   ├── enhanced-style.css # Enhanced components
-│   │   └── recipe.css       # Recipe-specific styles
-│   ├── js/
-│   │   ├── main.js         # Global functionality
-│   │   └── recipe.js       # Recipe page functionality
-│   └── images/             # Image assets
-├── recipes/                # Individual recipe pages
-├── includes/              # PHP includes
-└── cline_docs/            # Documentation
-```
+## Core Components
 
-## Design Patterns
+### 1. Frontend
+- HTML/CSS/JavaScript for UI
+- Bootstrap for responsive design
+- WebSocket API for recipe search
+- Recipe schema parsing
+- Dynamic content loading
 
-### Component Structure
-- Header with responsive navigation
-- Recipe cards for listings
-- Recipe detail template
-- Footer with social links
-- Contact form component
-- Location map integration
+### 2. Backend (Flask API)
+- Python Flask server
+- Recipe data fetching
+- Schema parsing
+- WebSocket integration
+- Error handling
 
-### CSS Architecture
-1. Global Styles (style.css)
-   - Typography
-   - Colors
-   - Layout utilities
-   - Common components
+## Data Flow
 
-2. Enhanced Styles (enhanced-style.css)
-   - Advanced components
-   - Animations
-   - Custom utilities
+### Recipe Search Flow
+1. User enters search query
+2. Frontend connects to WebSocket API
+3. Search results processed
+4. Recipe data fetched and parsed
+5. UI updated with results
 
-3. Recipe Styles (recipe.css)
-   - Recipe page layout
-   - Print styles
-   - Dark mode support
-   - Responsive adjustments
+### Recipe Display Flow
+1. Recipe URL received
+2. Schema data fetched
+3. Data parsed and formatted
+4. Content dynamically loaded
+5. Error states handled
 
-### JavaScript Patterns
-1. Recipe Functionality
-   - Rating system
-   - Form validation
-   - Social sharing
-   - Print handling
-   - Ingredient checklist persistence
+## Key Patterns
 
-2. Global Functionality
-   - Navigation toggle
-   - Form submissions
-   - Dynamic content loading
+### 1. WebSocket Communication
+- Session initialization
+- Search requests
+- Result processing
+- Error handling
 
-### Bootstrap Integration
-- Grid system for layouts
-- Component styling
-- Utility classes
-- Responsive breakpoints
-- Form components
-- Modal dialogs
-- Dropdown menus
+### 2. Recipe Data Parsing
+- Schema extraction
+- Duration parsing
+- Image handling
+- Metadata processing
 
-### Responsive Design
-- Mobile-first approach
-- Breakpoint system:
-  * xs: < 576px
-  * sm: ≥ 576px
-  * md: ≥ 768px
-  * lg: ≥ 992px
-  * xl: ≥ 1200px
+### 3. Error Handling
+- Connection errors
+- Parse errors
+- Missing data
+- Timeout handling
 
-### SEO Implementation
-- Schema.org recipe markup
-- Meta tags optimization
-- Open Graph tags
-- Semantic HTML structure
-- Accessible headings
-- Alt text for images
+### 4. API Integration
+- Flask endpoints
+- Data validation
+- Response formatting
+- Error responses
 
-### Performance Patterns
-- CSS minification
-- JS bundling
-- Image optimization
-- Lazy loading
-- Print stylesheet separation
-- Conditional loading
+## Technical Decisions
 
-### Form Handling
-- Client-side validation
-- Server-side validation
-- Error messaging
-- Success feedback
-- Input sanitization
+### 1. WebSocket for Search
+- Real-time results
+- Efficient communication
+- Session management
+- Better performance
 
-### State Management
-- Local storage for preferences
-- Form state persistence
-- Rating system state
-- Ingredient checklist state
+### 2. Schema Parsing
+- Structured data
+- Complete recipe info
+- Consistent format
+- Easy maintenance
 
-## Best Practices
-1. Semantic HTML
-2. Progressive enhancement
-3. Accessibility standards
-4. Cross-browser compatibility
-5. Mobile responsiveness
-6. Performance optimization
-7. Code documentation
-8. Version control
+### 3. Flask Backend
+- Python ecosystem
+- Easy integration
+- Flexible routing
+- Good performance
+
+## Future Considerations
+1. Caching layer
+2. Rate limiting
+3. Data validation
+4. Error recovery
+5. Performance optimization

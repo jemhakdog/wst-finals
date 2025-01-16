@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Search - Filipino Food Recipes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -142,9 +142,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="assets/js/recipe_search.js"></script>
     <script src="assets/js/favorites.js"></script>
+    <script src="assets/js/recipe_search.js"></script>
     <script>
+        // Debug: Check if SweetAlert2 is loaded
+        console.log('SweetAlert2 loaded?', typeof Swal !== 'undefined');
+        // Debug: Check if favorites.js is loaded
+        console.log('RecipeFavorites loaded?', typeof recipeFavorites !== 'undefined');
+        
         // Initialize search functionality
         const searchClient = new PanlasangPinoySearch();
         const searchInput = document.getElementById('searchInput');
@@ -170,26 +175,35 @@
             
             // Base names
             'tinola': 'recipes/chicken-tinola.html',
-            'kaldereta': 'recipes/beef-kaldereta.html',
-            'adobo': 'recipes/chicken-adobo.html'
+            'kaldereta': 'recipes/beef-kaldereta.html'
         };
 
         // Helper function to get local recipe URL
         function getLocalRecipeUrl(title) {
             const normalizedTitle = title.toLowerCase().trim();
-            let bestMatch = null;
-            let bestMatchLength = 0;
-
+            
             // First try exact match
             if (recipeMap[normalizedTitle]) {
                 return recipeMap[normalizedTitle];
             }
 
-            // Then try partial matches
+            // Then try finding the most specific match
+            let bestMatch = null;
+            let bestMatchScore = 0;
+
             for (const [key, value] of Object.entries(recipeMap)) {
-                if (normalizedTitle.includes(key) && key.length > bestMatchLength) {
+                // Split both strings into words
+                const keyWords = key.split(' ');
+                const titleWords = normalizedTitle.split(' ');
+                
+                // Count how many words match
+                const matchingWords = keyWords.filter(word => titleWords.includes(word));
+                const matchScore = matchingWords.length / keyWords.length; // Score based on proportion of matching words
+                
+                // Update best match if this match has a better score
+                if (matchScore > bestMatchScore && matchScore >= 0.75) { // Require at least 75% word match
                     bestMatch = value;
-                    bestMatchLength = key.length;
+                    bestMatchScore = matchScore;
                 }
             }
 
@@ -235,22 +249,36 @@
                         <div class="d-flex gap-2 mt-2">
                             ${localUrl ? `
                                 <a href="${localUrl}" class="btn btn-outline-primary flex-grow-1">View Recipe</a>
-                                ${createFavoriteButton({
-                                    url: localUrl,
+                                <button class="btn btn-sm ${recipeFavorites.isFavorite(localUrl || recipe.url) ? 'btn-danger' : 'btn-outline-danger'}" onclick="handleSaveRecipe(${JSON.stringify({
+                                    url: localUrl || recipe.url,
                                     title: recipe.title,
-                                    image: recipe.image,
-                                    description: recipe.description
-                                }, 'btn-sm').outerHTML}
+                                    image: recipe.image || 'assets/images/recipe-placeholder.jpg',
+                                    description: recipe.description || `Authentic ${recipe.title} recipe`,
+                                    cookTime: recipe.cookTime,
+                                    prepTime: recipe.prepTime,
+                                    rating: recipe.rating,
+                                    reviewCount: recipe.reviewCount
+                                }).replace(/"/g, '&quot;')})">
+                                    <i class="bi ${recipeFavorites.isFavorite(localUrl || recipe.url) ? 'bi-heart-fill' : 'bi-heart'}"></i>
+                                    ${recipeFavorites.isFavorite(localUrl || recipe.url) ? 'Saved' : 'Save Recipe'}
+                                </button>
                             ` : `
                                 <a href="recipe-template.html?url=${encodeURIComponent(recipe.url)}" class="btn btn-outline-primary flex-grow-1">
                                     <i class="bi bi-eye"></i> View Recipe
                                 </a>
-                                ${createFavoriteButton({
+                                <button class="btn btn-sm ${recipeFavorites.isFavorite(recipe.url) ? 'btn-danger' : 'btn-outline-danger'}" onclick="handleSaveRecipe(${JSON.stringify({
                                     url: recipe.url,
                                     title: recipe.title,
-                                    image: recipe.image,
-                                    description: recipe.description
-                                }, 'btn-sm').outerHTML}
+                                    image: recipe.image || 'assets/images/recipe-placeholder.jpg',
+                                    description: recipe.description || `Authentic ${recipe.title} recipe`,
+                                    cookTime: recipe.cookTime,
+                                    prepTime: recipe.prepTime,
+                                    rating: recipe.rating,
+                                    reviewCount: recipe.reviewCount
+                                }).replace(/"/g, '&quot;')})">
+                                    <i class="bi ${recipeFavorites.isFavorite(recipe.url) ? 'bi-heart-fill' : 'bi-heart'}"></i>
+                                    ${recipeFavorites.isFavorite(recipe.url) ? 'Saved' : 'Save Recipe'}
+                                </button>
                             `}
                         </div>
                     </div>
@@ -305,6 +333,75 @@
                         </div>
                     </div>
                 `;
+            }
+        }
+
+        // Save recipe handler
+        async function handleSaveRecipe(recipe) {
+            console.log('Save recipe clicked:', recipe);
+            const isFavorite = recipeFavorites.isFavorite(recipe.url);
+            console.log('Is already favorite?', isFavorite);
+            
+            if (typeof Swal === 'undefined') {
+                console.error('SweetAlert2 not loaded!');
+                alert('Error: SweetAlert2 is not loaded. Please refresh the page.');
+                return;
+            }
+
+            try {
+                const result = await Swal.fire({
+                    title: isFavorite ? 'Remove from Favorites?' : 'Save Recipe?',
+                    text: isFavorite ? 
+                          'Are you sure you want to remove this recipe from your favorites?' : 
+                          'Would you like to save this recipe to your favorites?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: isFavorite ? 'Yes, remove it' : 'Yes, save it',
+                    cancelButtonText: 'Cancel'
+                });
+
+                if (result.isConfirmed) {
+                    if (isFavorite) {
+                        recipeFavorites.removeFavorite(recipe.url);
+                    } else {
+                        recipeFavorites.addFavorite(recipe);
+                    }
+                    
+                    // Update button state
+                    const button = event.target.closest('button');
+                    if (isFavorite) {
+                        button.classList.remove('btn-danger');
+                        button.classList.add('btn-outline-danger');
+                        button.innerHTML = `
+                            <i class="bi bi-heart"></i>
+                            Save Recipe
+                        `;
+                    } else {
+                        button.classList.remove('btn-outline-danger');
+                        button.classList.add('btn-danger');
+                        button.innerHTML = `
+                            <i class="bi bi-heart-fill"></i>
+                            Saved
+                        `;
+                    }
+
+                    // Show success notification
+                    await Swal.fire({
+                        icon: 'success',
+                        title: isFavorite ? 'Recipe Removed' : 'Recipe Saved!',
+                        text: isFavorite ? 'Recipe removed from favorites.' : 'You can find it in your favorites.',
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true
+                    });
+                }
+            } catch (error) {
+                console.error('Error saving recipe:', error);
+                alert('Would you like to save this recipe to your favorites?');
             }
         }
 
