@@ -1,0 +1,285 @@
+/* Enhanced styles for Filipino Food Recipes website */
+
+:root {
+    /* Color Palette - Warm and appetizing colors */
+    --primary-color: #e65100;     /* Deep Orange */
+    --secondary-color: #fb8c00;   /* Orange */
+    --accent-color: #ffb74d;      /* Light Orange */
+    --text-dark: #2d2d2d;         /* Near Black */
+    --text-light: #757575;        /* Medium Gray */
+    --background-light: #fff9f0;  /* Warm White */
+    --background-dark: #2d2d2d;   /* Dark Gray */
+}
+
+/* Typography Hierarchy */
+h1, .h1 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+h2, .h2 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.25rem;
+}
+
+h3, .h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=1920') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    margin-top: 76px; /* Account for fixed navbar */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 1;
+}
+
+.hero-section .container {
+    z-index: 2;
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+.hero-section .display-3 {
+    font-weight: 800;
+    text-shadow: 2px 4px 8px rgba(0,0,0,0.5);
+    letter-spacing: -1px;
+    color: #ffffff;
+    font-size: 4.5rem;
+}
+
+.hero-section .lead {
+    text-shadow: 1px 2px 4px rgba(0,0,0,0.4);
+    font-weight: 400;
+    color: var(--accent-color);
+    font-size: 2.25rem !important;
+    min-height: 2.75em;
+    border-right: 0.08em solid transparent;
+}
+
+.typing-text {
+    display: inline-block;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent-color) }
+}
+
+.hero-section .fs-5 {
+    text-shadow: 1px 2px 4px rgba(0,0,0,0.4);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #ffffff;
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        margin-top: 66px;
+    }
+    
+    .hero-section .display-3 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-section .lead {
+        font-size: 1.75rem !important;
+        margin-bottom: 1rem;
+    }
+
+    .hero-section .fs-5 {
+        font-size: 1.1rem !important;
+        padding: 0 1rem;
+    }
+
+    .min-vh-75 {
+        min-height: 60vh;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section .display-3 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section .lead {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* Section Spacing */
+.section-padding {
+    padding: 5rem 0;
+}
+
+.section-padding-sm {
+    padding: 3rem 0;
+}
+
+/* Card Enhancements */
+.recipe-card {
+    background: white;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.recipe-card .card-body {
+    padding: 1.5rem;
+}
+
+.recipe-card img {
+    border-radius: 12px 12px 0 0;
+    height: 240px;
+    object-fit: cover;
+}
+
+.recipe-card .card-title {
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.recipe-card .card-text {
+    color: var(--text-light);
+    margin-bottom: 1.25rem;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 0.625rem 1.5rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Navigation Enhancements */
+.navbar {
+    padding: 1rem 0;
+    background-color: white !important;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-dark) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Content Sections */
+.featured-section {
+    background-color: var(--background-light);
+}
+
+.about-section {
+    background-color: white;
+}
+
+/* Footer Enhancements */
+footer {
+    background-color: var(--background-dark);
+    color: white;
+    padding: 4rem 0 2rem;
+}
+
+footer .footer-heading {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+footer .footer-link {
+    color: rgba(255,255,255,0.8);
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+footer .footer-link:hover {
+    color: var(--accent-color);
+}
+
+/* Utility Classes */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.bg-light {
+    background-color: var(--background-light) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    h1, .h1 {
+        font-size: 2.25rem;
+    }
+    
+    h2, .h2 {
+        font-size: 1.875rem;
+    }
+    
+    h3, .h3 {
+        font-size: 1.5rem;
+    }
+    
+    .section-padding {
+        padding: 3rem 0;
+    }
+    
+    .section-padding-sm {
+        padding: 2rem 0;
+    }
+}

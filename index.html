@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover authentic Filipino recipes with easy-to-follow instructions. From classic adobo to comforting soups, find your next favorite Filipino dish.">
+    <title>Filipino Food Recipes - Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/enhanced-style.css" rel="stylesheet">
+</head>
+<body>
+    <header role="banner" class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <h1 class="h3 mb-0">Filipino Food Recipes</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html" aria-current="page">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="recipes.html">Recipes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="recipe-search.html">Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section class="hero-section position-relative overflow-hidden">
+            <div class="hero-overlay"></div>
+            <div class="container position-relative">
+                <div class="row min-vh-75 align-items-center py-5">
+                    <div class="col-lg-8 text-white text-center text-lg-start">
+                        <h1 class="display-3 fw-bold mb-4">Filipino Kusina</h1>
+                        <p class="lead fs-2 mb-4 typing-text"></p>
+                        <p class="fs-5 mb-5">Discover our collection of authentic Filipino recipes, bringing the warmth and flavors of Filipino home cooking to your kitchen.</p>
+                        <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                            <a href="recipes.html" class="btn btn-primary btn-lg px-4">
+                                <i class="bi bi-book me-2"></i>Browse Recipes
+                            </a>
+                            <a href="about.html" class="btn btn-outline-light btn-lg px-4">
+                                <i class="bi bi-info-circle me-2"></i>Learn More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-section section-padding-sm">
+            <div class="container">
+                <h2 class="text-center mb-5">Featured Recipes</h2>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <article class="recipe-card h-100">
+                            <a href="recipes/chicken-adobo.html" class="text-decoration-none">
+                                <img src="https://panlasangpinoy.com/wp-content/uploads/2024/04/Filipino-Chicken-Adobo-Recipe.jpg"
+                                     class="card-img-top"
+                                     alt="Chicken Adobo dish">
+                                <div class="card-body">
+                                    <h3 class="card-title h5">Chicken Adobo</h3>
+                                    <p class="card-text">Classic Filipino chicken dish cooked in soy sauce and vinegar</p>
+                                    <span class="btn btn-primary btn-sm">View Recipe</span>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <article class="recipe-card h-100">
+                            <a href="recipes/sinigang.html" class="text-decoration-none">
+                                <img src="https://panlasangpinoy.com/wp-content/uploads/2018/11/Pork-Sinigang-Recipe.jpg"
+                                     class="card-img-top"
+                                     alt="Sinigang soup">
+                                <div class="card-body">
+                                    <h3 class="card-title h5">Sinigang</h3>
+                                    <p class="card-text">Sour and savory Filipino soup with pork and vegetables</p>
+                                    <span class="btn btn-primary btn-sm">View Recipe</span>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <article class="recipe-card h-100">
+                            <a href="recipes/chicken-tinola.html" class="text-decoration-none">
+                                <img src="https://panlasangpinoy.com/wp-content/uploads/2018/11/Chicken-Tinola-Recipe.jpg"
+                                     class="card-img-top"
+                                     alt="Chicken Tinola soup">
+                                <div class="card-body">
+                                    <h3 class="card-title h5">Chicken Tinola</h3>
+                                    <p class="card-text">Ginger-flavored chicken soup with green papaya</p>
+                                    <span class="btn btn-primary btn-sm">View Recipe</span>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <article class="recipe-card h-100">
+                            <a href="recipes/beef-kaldereta.html" class="text-decoration-none">
+                                <img src="https://panlasangpinoy.com/wp-content/uploads/2018/11/Beef-Kaldereta-Recipe.jpg"
+                                     class="card-img-top"
+                                     alt="Beef Kaldereta stew">
+                                <div class="card-body">
+                                    <h3 class="card-title h5">Beef Kaldereta</h3>
+                                    <p class="card-text">Rich and hearty Filipino beef stew in tomato sauce</p>
+                                    <span class="btn btn-primary btn-sm">View Recipe</span>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section section-padding bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="mb-4">Welcome to Filipino Food Recipes</h2>
+                        <p class="lead mb-5">Our mission is to preserve and share authentic Filipino recipes, making them accessible to everyone who wants to explore Filipino cuisine. Each recipe comes with detailed instructions, ingredient lists, and helpful tips to ensure your cooking success.</p>
+                    </div>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-4">
+                        <div class="feature-card text-center p-4">
+                            <i class="bi bi-journal-check fs-2 text-primary mb-3"></i>
+                            <h3 class="h5 mb-3">Authentic Recipes</h3>
+                            <p class="mb-0">Traditional Filipino recipes passed down through generations</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card text-center p-4">
+                            <i class="bi bi-list-check fs-2 text-primary mb-3"></i>
+                            <h3 class="h5 mb-3">Step-by-Step Guide</h3>
+                            <p class="mb-0">Clear instructions and complete ingredient lists</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card text-center p-4">
+                            <i class="bi bi-lightbulb fs-2 text-primary mb-3"></i>
+                            <h3 class="h5 mb-3">Cooking Tips</h3>
+                            <p class="mb-0">Expert advice and techniques for perfect results</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-section section-padding bg-primary text-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h2 class="mb-4">Stay Updated</h2>
+                        <p class="lead mb-5">Subscribe to our newsletter for new recipes and cooking tips!</p>
+                        <form action="/subscribe" method="post" class="newsletter-form">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                                        <label for="email" class="text-dark">Email Address</label>
+                                    </div>
+                                    <small class="form-text text-white-50 d-block mb-4">We'll never share your email with anyone else.</small>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-light btn-lg px-5">
+                                        <i class="bi bi-envelope-check me-2"></i>Subscribe
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4">
+                    <h5 class="footer-heading">Filipino Food Recipes</h5>
+                    <p class="mb-3">Discover and share authentic Filipino cuisine with our community of food lovers.</p>
+                    <p class="mb-0">&copy; 2025 Filipino Food Recipes. All rights reserved.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="privacy.html" class="footer-link">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="terms.html" class="footer-link">Terms of Use</a></li>
+                        <li class="mb-2"><a href="contact.html" class="footer-link">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="footer-heading">Connect With Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="footer-link me-3"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="footer-link me-3"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="footer-link me-3"><i class="bi bi-pinterest fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/typing-animation.js"></script>
+</body>
+</html>

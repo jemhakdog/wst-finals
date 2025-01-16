@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our collection of authentic Filipino recipes. From classic adobo to comforting soups, find your next favorite Filipino dish.">
+    <title>All Recipes - Filipino Food Recipes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/enhanced-style.css" rel="stylesheet">
+</head>
+<body>
+    <header role="banner" class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <h1 class="h3 mb-0">Filipino Food Recipes</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="recipes.html" aria-current="page">Recipes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="recipe-search.html">Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="mt-5 pt-5">
+        <section class="recipes-hero bg-light py-5 mb-5">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1 class="display-4 mb-4">Filipino Recipes</h1>
+                        <p class="lead mb-4">Discover authentic Filipino recipes that bring the taste of the Philippines to your kitchen.</p>
+                        <div class="search-box mb-4">
+                            <div class="input-group">
+                                <input type="search" class="form-control form-control-lg" placeholder="Search recipes...">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-recipes mb-5">
+            <div class="container">
+                <h2 class="h3 mb-4">Popular Recipes</h2>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <article class="recipe-card h-100">
+                            <a href="recipes/chicken-adobo.html" class="text-decoration-none">
+                                <img src="https://panlasangpinoy.com/wp-content/uploads/2024/04/Filipino-Chicken-Adobo-Recipe.jpg" 
+                                     class="card-img-top" alt="Chicken Adobo">
+                                <div class="card-body">
+                                    <h3 class="card-title h5">Chicken Adobo</h3>
+                                    <p class="card-text">Classic Filipino chicken dish cooked in soy sauce and vinegar</p>
+                                    <div class="recipe-meta">
+                                        <span><i class="bi bi-clock"></i> 45 mins</span>
+                                        <span><i class="bi bi-star-fill text-warning"></i> 4.8</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <article class="recipe-card h-100">
+                            <a href="recipes/sinigang.html" class="text-decoration-none">
+                                <img src="https://panlasangpinoy.com/wp-content/uploads/2018/11/Pork-Sinigang-Recipe.jpg" 
+                                     class="card-img-top" alt="Sinigang">
+                                <div class="card-body">
+                                    <h3 class="card-title h5">Sinigang</h3>
+                                    <p class="card-text">Sour and savory Filipino soup with pork and vegetables</p>
+                                    <div class="recipe-meta">
+                                        <span><i class="bi bi-clock"></i> 60 mins</span>
+                                        <span><i class="bi bi-star-fill text-warning"></i> 4.7</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <article class="recipe-card h-100">
+                            <a href="recipes/chicken-tinola.html" class="text-decoration-none">
+                                <img src="https://panlasangpinoy.com/wp-content/uploads/2018/11/Chicken-Tinola-Recipe.jpg" 
+                                     class="card-img-top" alt="Chicken Tinola">
+                                <div class="card-body">
+                                    <h3 class="card-title h5">Chicken Tinola</h3>
+                                    <p class="card-text">Ginger-flavored chicken soup with green papaya</p>
+                                    <div class="recipe-meta">
+                                        <span><i class="bi bi-clock"></i> 50 mins</span>
+                                        <span><i class="bi bi-star-fill text-warning"></i> 4.6</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <article class="recipe-card h-100">
+                            <a href="recipes/beef-kaldereta.html" class="text-decoration-none">
+                                <img src="https://panlasangpinoy.com/wp-content/uploads/2019/03/Beef-Kaldereta.jpg"
+                                     class="card-img-top" alt="Beef Kaldereta">
+                                <div class="card-body">
+                                    <h3 class="card-title h5">Beef Kaldereta</h3>
+                                    <p class="card-text">Rich and hearty Filipino beef stew in tomato sauce</p>
+                                    <div class="recipe-meta">
+                                        <span><i class="bi bi-clock"></i> 90 mins</span>
+                                        <span><i class="bi bi-star-fill text-warning"></i> 4.9</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Favorite Recipes Section -->
+        <section class="favorite-recipes mb-5">
+            <div class="container">
+                <h2 class="h3 mb-4">Favorite Recipes</h2>
+                <div id="favoriteRecipes" class="row g-4">
+                    <!-- Favorites will be dynamically loaded here -->
+                </div>
+                <div id="noFavorites" class="text-center py-5">
+                    <p class="text-muted">
+                        <i class="bi bi-heart"></i>
+                        No favorite recipes yet. Start saving recipes to see them here!
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4">
+                    <h5 class="footer-heading">Filipino Food Recipes</h5>
+                    <p class="mb-3">Discover and share authentic Filipino cuisine with our community of food lovers.</p>
+                    <p class="mb-0">&copy; 2025 Filipino Food Recipes. All rights reserved.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="privacy.html" class="footer-link">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="terms.html" class="footer-link">Terms of Use</a></li>
+                        <li class="mb-2"><a href="contact.html" class="footer-link">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="footer-heading">Connect With Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="footer-link me-3"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="footer-link me-3"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="footer-link me-3"><i class="bi bi-pinterest fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/favorites.js"></script>
+    <script>
+        // Initialize favorites display
+        function displayFavorites() {
+            const favorites = recipeFavorites.getFavorites();
+            const favoriteRecipesContainer = document.getElementById('favoriteRecipes');
+            const noFavoritesMessage = document.getElementById('noFavorites');
+
+            if (favorites.length === 0) {
+                favoriteRecipesContainer.innerHTML = '';
+                noFavoritesMessage.classList.remove('d-none');
+                return;
+            }
+
+            noFavoritesMessage.classList.add('d-none');
+            favoriteRecipesContainer.innerHTML = favorites.map(recipe => `
+                <div class="col-md-6 col-lg-3">
+                    <article class="recipe-card h-100">
+                        <a href="${recipe.url}" class="text-decoration-none">
+                            <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
+                            <div class="card-body">
+                                <h3 class="card-title h5">${recipe.title}</h3>
+                                <p class="card-text">${recipe.description}</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <button onclick="event.preventDefault(); removeFavorite('${recipe.url}')"
+                                            class="btn btn-danger btn-sm">
+                                        <i class="bi bi-heart-fill"></i> Remove
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            `).join('');
+        }
+
+        // Remove favorite and update display
+        function removeFavorite(url) {
+            recipeFavorites.removeFavorite(url);
+            displayFavorites();
+        }
+
+        // Initial display
+        displayFavorites();
+
+        // Listen for favorites updates
+        window.addEventListener('favoritesUpdated', displayFavorites);
+    </script>
+</body>
+</html>
