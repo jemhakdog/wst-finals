@@ -1,3 +1,31 @@
+
+import subprocess
+import sys
+
+def setup_packages():
+    """
+    Install required packages from requirements.txt if they're not already installed.
+    Returns True if all packages are installed successfully, False otherwise.
+    """
+    try:
+        print("Checking and installing required packages...")
+        # Use pip to install requirements
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+        print("All required packages installed successfully!")
+        return True
+    except subprocess.CalledProcessError as e:
+        print(f"Error installing packages: {e}")
+        return False
+    except Exception as e:
+        print(f"Unexpected error during package installation: {e}")
+        return False
+
+# Ensure packages are installed before starting the app
+if not setup_packages():
+    print("Failed to install required packages. Please install them manually.")
+    sys.exit(1)
+
+
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_caching import Cache
@@ -10,6 +38,7 @@ import aiohttp
 from bs4 import BeautifulSoup
 import re
 from datetime import datetime
+
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
